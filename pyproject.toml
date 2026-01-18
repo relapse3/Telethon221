@@ -25,5 +25,8 @@ Repository = "https://github.com/relapse3/Telethon221"
 [tool.setuptools.packages.find]
 include = ["telethon_221", "telethon_221.*"]
 
+[tool.setuptools.package-data]
+telethon_221 = ["py.typed"]
+
 [tool.setuptools]
 include-package-data = true
