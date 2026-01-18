@@ -37,6 +37,7 @@ class SQLiteSession(MemorySession):
         self.filename = ':memory:'
         self.save_entities = True
         self._with_tmp_key = False
+        
         self.store_tmp_auth_key_on_disk = store_tmp_auth_key_on_disk
 
         if session_id:
