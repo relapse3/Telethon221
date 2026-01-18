@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "telethon-221"
-version = "1.42.0+layer221.0"
+version = "1.42.0+layer221.1"
 description = "Telethon fork exposed as telethon_221 (separate import/name to coexist with upstream)"
 readme = "README.md"
 license = { file = "LICENSE" }
