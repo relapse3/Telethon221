@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=65", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telethon-221"
+version = "1.42.0+layer221.0"
+description = "Telethon fork exposed as telethon_221 (separate import/name to coexist with upstream)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+authors = [{ name = "Your Name or Org" }]
+dependencies = [
+  "pyaes",
+  "rsa",
+]
+
+[project.optional-dependencies]
+cryptg = ["cryptg"]
+
+[project.urls]
+Homepage = "https://github.com/LonamiWebs/Telethon"
+Repository = "https://github.com/relapse3/Telethon221"
+
+[tool.setuptools.packages.find]
+include = ["telethon_221", "telethon_221.*"]
+
+[tool.setuptools]
+include-package-data = true
