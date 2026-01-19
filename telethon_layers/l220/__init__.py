@@ -11,6 +11,7 @@ from .telethon import (
     functions,
     custom,
     connection,
+    sessions,
     version,
     sync,
 )
@@ -26,6 +27,7 @@ __all__ = [
     "events",
     "utils",
     "connection",
+    "sessions",
     "version",
     "sync",
 ]
