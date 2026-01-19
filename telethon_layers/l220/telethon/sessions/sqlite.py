@@ -1,6 +1,7 @@
 import datetime
 import os
 import time
+import pathlib
 
 from ..tl import types
 from .memory import MemorySession, _SentFileType
@@ -40,6 +41,8 @@ class SQLiteSession(MemorySession):
         self.store_tmp_auth_key_on_disk = store_tmp_auth_key_on_disk
 
         if session_id:
+            if isinstance(session_id, pathlib.Path):
+                session_id = str(session_id)
             self.filename = session_id
             if not self.filename.endswith(EXTENSION):
                 self.filename += EXTENSION
