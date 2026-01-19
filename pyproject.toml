@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "telethon-layers"
-version = "1.42.0+layers.2"
+version = "1.42.0+layers.3"
 description = "Telethon fork with multiple layer namespaces (l221, l220) living alongside upstream"
 readme = "README.md"
 license = { file = "LICENSE" }

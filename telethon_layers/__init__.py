@@ -5,6 +5,6 @@ telethon_layers: сборка нескольких слоёв Telethon под р
     from telethon_layers.l220 import TelegramClient as Client220
 """
 
-from . import l221, l220
+from . import l221, l220, l216
 
-__all__ = ["l221", "l220"]
+__all__ = ["l221", "l220", "l216"]
