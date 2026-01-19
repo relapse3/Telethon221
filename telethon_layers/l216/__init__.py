@@ -15,6 +15,7 @@ from .telethon import (
     sessions,
     version,
     sync,
+    password
 )
 
 __version__ = version.__version__
@@ -31,4 +32,5 @@ __all__ = [
     "sessions",
     "version",
     "sync",
+    "password"
 ]
