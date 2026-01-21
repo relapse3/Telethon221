@@ -635,7 +635,6 @@ class MTProtoSender:
             return
 
         if rpc_result.error:
-            print(rpc_result.error)
             error = rpc_message_to_error(rpc_result.error, state.request)
             self._send_queue.append(
                 RequestState(MsgsAck([state.msg_id])))
@@ -646,7 +645,6 @@ class MTProtoSender:
             try:
                 with BinaryReader(rpc_result.body) as reader:
                     result = state.request.read_result(reader)
-                    print(result)
             except Exception as e:
                 # e.g. TypeNotFoundError, should be propagated to caller
                 if not state.future.cancelled():
