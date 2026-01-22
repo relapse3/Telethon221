@@ -14,7 +14,7 @@ import warnings
 from .. import utils, version, helpers, __name__ as __base_name__
 from ..crypto import rsa
 from ..extensions import markdown
-from ..network import MTProtoSender, Connection, ConnectionTcpFull, TcpMTProxy
+from ..network import MTProtoSender as MTProtoSenderBase, Connection, ConnectionTcpFull, TcpMTProxy
 from ..sessions import Session, SQLiteSession, MemorySession
 from ..tl import functions, types
 from ..tl.alltlobjects import LAYER
@@ -69,6 +69,27 @@ class _ExportState:
     def mark_disconnected(self):
         assert self.should_disconnect(), 'marked as disconnected when it was borrowed'
         self._connected = False
+
+
+class MTProtoSender(MTProtoSenderBase):
+
+    async def _handle_ack(self, message):
+        """
+        Handles a server acknowledge about our messages. Normally
+        these can be ignored except in the case of ``auth.logOut``:
+
+            auth.logOut#5717da40 = Bool;
+
+        Telegram doesn't seem to send its result so we need to confirm
+        it manually. No other request is known to have this behaviour.
+
+        Since the ID of sent messages consisting of a container is
+        never returned (unless on a bad notification), this method
+        also removes containers messages when any of their inner
+        messages are acknowledged.
+        """
+        ack = message.obj
+        self._log.debug('Handling acknowledge for %s', str(ack.msg_ids))
 
 
 # TODO How hard would it be to support both `trio` and `asyncio`?
